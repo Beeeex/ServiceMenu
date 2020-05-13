@@ -1,16 +1,12 @@
 package com.example.services;
 import java.io.*;
-import java.util.List;
 
 import com.example.entites.MenuContent;
-import com.example.entites.MenuNode;
+
 import com.google.gson.Gson;
 
 
-public class JsonImporter{
-	public static void main(String[] args) {
-		}
-	
+public class JsonImporter{	
 	/**
 	   * 
 	   * Converto un file JSON in una lista di oggetti Java
@@ -18,22 +14,22 @@ public class JsonImporter{
 	   * @param pathFile
 	   * @return List<MenuNode>
 	   */
-	  public static List<MenuNode> readJsonFile2ObjectList(String filePath){
+	  public static MenuContent readJsonFile2ObjectList(String filePath){
 		  Gson gson = new Gson();
-		  List<MenuNode> list = null;
+		  MenuContent x = null;
 
-		    try (Reader reader = new FileReader("input/ServiceMenu.json")) {
+		    try (Reader reader = new FileReader(filePath)) {
 
 		        // Converto un file JSON in una lista di oggetti Java 
 		        MenuContent menu = gson.fromJson(reader, MenuContent.class);
-		        return list = menu.getNodes();
+		        return x = menu;
 
 		        
 
 		    } catch (IOException e) {
 		        e.printStackTrace();
 		        }
-	    return list;
+	    return x;
 	  }
-	
+	  
 }
